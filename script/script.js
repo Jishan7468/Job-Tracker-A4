@@ -37,8 +37,12 @@ document.getElementById('inter-btn').addEventListener('click',function(){
     const totalJobs = document.getElementById('total')
     const interCards = document.getElementById('interview-cards')
     totalJobs.innerText = interCards.children.length
+
+    if(totalJobs.innerText === '0'){
+
+      section.classList.remove('hidden')
+    }
    
-    section.classList.remove('hidden')
     cards.classList.add('hidden')
 })
 document.getElementById('reject-btn').addEventListener('click',function(){
@@ -81,8 +85,6 @@ function transferToInterview(id){
   const btn = document.getElementById('card-1-inter')
   btn.setAttribute('disabled', true)
   btn.style.backgroundColor = 'light-gray'
-  
-
   const container = document.getElementById('interview-cards')
 
   const newDiv = document.createElement('div')
@@ -99,12 +101,12 @@ function transferToInterview(id){
                     </div>
                     <!-- badge container -->
                     <div>
-                        <button class="btn bg-blue-100 text-black font-normal" disabled>Not Applied</button>
+                        <button disabled class="btn  text-green-500 font-bold border-2 border-green-400 bg-green-100">Interview</button>
                     </div>
                     <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                     
                     
-                    <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+                    <button disabled class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
                     <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
                     
                     </div>
@@ -114,5 +116,16 @@ function transferToInterview(id){
   
   `
   container.appendChild(newDiv)
+  totalInterview.innerText = interCards.children.length
+  
+  const badge = document.getElementById('badge-1')
+  badge.remove()
 
+  const badgeContainer = document.getElementById('badge-container')
+
+  const badgeDiv = document.createElement('div')
+  badgeDiv.innerHTML = `
+  <button disabled class="btn  text-green-500 font-bold border-2 border-green-400 bg-green-100">Interview</button>
+  `
+  badgeContainer.appendChild(badgeDiv)
 }
