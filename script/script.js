@@ -42,16 +42,26 @@ document.getElementById('inter-btn').addEventListener('click',function(){
 
       section.classList.remove('hidden')
     }
+    else{
+      section.classList.add('hidden')
+    }
    
     cards.classList.add('hidden')
+    rejectCards.classList.add('hidden')
+    interCards.classList.remove('hidden')
 })
 document.getElementById('reject-btn').addEventListener('click',function(){
      const totalJobs = document.getElementById('total')
     const rejectCards = document.getElementById('rejected-cards')
     totalJobs.innerText = rejectCards.children.length
+    if(totalJobs.innerText === '0'){
+
+      section.classList.remove('hidden')
+    }
   
-    section.classList.remove('hidden')
     cards.classList.add('hidden')
+    interCards.classList.add('hidden')
+    rejectCards.classList.remove('hidden')
 })
 function show(){
       const totalJobs = document.getElementById('total')
@@ -82,17 +92,16 @@ function deleteCard(id){
 }
 function transferToInterview(id){
   const card = document.getElementById(id)
-  const btn = document.getElementById('card-1-inter')
-  btn.setAttribute('disabled', true)
-  btn.style.backgroundColor = 'light-gray'
+  card.classList.add('border-green-300')
   const container = document.getElementById('interview-cards')
 
   const newDiv = document.createElement('div')
+  const company = card.querySelector('.company-name').innerText
 
   newDiv.innerHTML = `
   
-  <div id="card-1" class="space-y-5 bg-white p-7 rounded-3xl b border-l-10 border-gray-200">
-                    <h1 class="font-bold text-xl">Mobile First Corp</h1>
+  <div class="border-green-300 space-y-5 bg-white p-7 rounded-3xl border-l-10">
+                    <h1 class="font-bold text-xl"> ${company}</h1>
                     <p class="text-neutral/50">React Native Developer</p>
                     <div class="flex gap-8 text-neutral/50">
                         <p>Remote</p>
@@ -110,6 +119,7 @@ function transferToInterview(id){
                     <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
                     
                     </div>
+                    
                 </div>
                 
   
@@ -118,14 +128,15 @@ function transferToInterview(id){
   container.appendChild(newDiv)
   totalInterview.innerText = interCards.children.length
   
-  const badge = document.getElementById('badge-1')
-  badge.remove()
-
-  const badgeContainer = document.getElementById('badge-container')
-
-  const badgeDiv = document.createElement('div')
-  badgeDiv.innerHTML = `
-  <button disabled class="btn  text-green-500 font-bold border-2 border-green-400 bg-green-100">Interview</button>
-  `
-  badgeContainer.appendChild(badgeDiv)
+  
 }
+// const badge = document.getElementById('badge-1')
+//   badge.remove()
+
+//   const badgeContainer = document.getElementById('badge-container')
+
+//   const badgeDiv = document.createElement('div')
+//   badgeDiv.innerHTML = `
+//   <button disabled class="btn  text-green-500 font-bold border-2 border-green-400 bg-green-100">Interview</button>
+//   `
+//   badgeContainer.appendChild(badgeDiv)
