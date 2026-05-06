@@ -1,10 +1,10 @@
-// toggle color function
 const cards = document.getElementById('all-card')
 const interCards = document.getElementById('interview-cards')
 const section = document.getElementById('no-jobs')
 const rejectCards = document.getElementById('rejected-cards')
 const totalInterview = document.getElementById('total-inter')
 const totalReject = document.getElementById('total-reject')
+// toggle color function
 function toggleColor(id){
 const allBtn = document.getElementById('all-btn')
 const interBtn = document.getElementById('inter-btn')
@@ -72,8 +72,16 @@ show()
 document.getElementById('all-btn').addEventListener('click',function(){
   const totalJobs = document.getElementById('total')
     totalJobs.innerText = cards.children.length
-    section.classList.add('hidden')
-    cards.classList.remove('hidden')
+  cards.classList.remove('hidden')
+  section.classList.add('hidden')
+  rejectCards.classList.add('hidden')
+  interCards.classList.add('hidden')
+
+    if(totalJobs.innerText==='0'){
+
+      section.classList.remove('hidden')
+    }
+    
 })
 
 
@@ -94,6 +102,10 @@ function transferToInterview(id){
   const card = document.getElementById(id)
   card.classList.add('border-green-300')
   const container = document.getElementById('interview-cards')
+
+  const disableButton = card.querySelector('.text-green-500')
+
+  disableButton.setAttribute('disabled','true')
 
   const newDiv = document.createElement('div')
   const company = card.querySelector('.company-name').innerText
@@ -117,6 +129,7 @@ function transferToInterview(id){
                     
                     <button disabled class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
                     <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
+                     
                     
                     </div>
                     
@@ -127,16 +140,18 @@ function transferToInterview(id){
   `
   container.appendChild(newDiv)
   totalInterview.innerText = interCards.children.length
+  interCards.classList.add('hidden')
+    rejectCards.classList.add('hidden')
   
   
 }
-// const badge = document.getElementById('badge-1')
-//   badge.remove()
 
-//   const badgeContainer = document.getElementById('badge-container')
+// badge change
 
-//   const badgeDiv = document.createElement('div')
-//   badgeDiv.innerHTML = `
-//   <button disabled class="btn  text-green-500 font-bold border-2 border-green-400 bg-green-100">Interview</button>
-//   `
-//   badgeContainer.appendChild(badgeDiv)
+function badgeChange(id){
+  const badge = document.getElementById(id)
+  badge.innerText = 'Interview'
+  badge.className = ''
+  badge.className = "btn bg-green-100 text-green-500 font-bold border-2 border-green-400"
+}
+// disable button

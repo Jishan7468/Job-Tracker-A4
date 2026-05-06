@@ -90,7 +90,7 @@
                  
                  
                     <div id="card-1" class="space-y-5 bg-white p-7 rounded-3xl relative b border-l-10 border-gray-200">
-                    <h1  class=" company-name font-bold text-xl">Jishan First Corp</h1>
+                    <h1  class="company-name font-bold text-xl">Jishan First Corp</h1>
                     <p class="text-neutral/50">React Native Developer</p>
                     <div class="flex gap-8 text-neutral/50">
                         <p>Remote</p>
@@ -98,13 +98,13 @@
                         <li>$130,000-$175,000</li>
                     </div>
                     <!-- badge container -->
-                    <div id="badge-container" class="">
+                    <div>
                         <button id="badge-1" class="btn bg-blue-100 text-black font-normal" disabled>Not Applied</button>
                     </div>
                     <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                     
                     
-                    <button id="card-1-inter" onclick="transferToInterview('card-1')" class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+                    <button id="card-1-inter" onclick="transferToInterview('card-1');badgeChange('badge-1')" class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
                     <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
                     <div class="absolute top-5 right-10">
                         <button onclick="deleteCard('card-1')"  class="btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400  hover:bg-red-400">
@@ -124,12 +124,12 @@
                     </div>
                     <!-- badge container -->
                     <div>
-                        <button class="btn bg-blue-100 text-black font-normal" disabled>Not Applied</button>
+                        <button id="badge-2" class="btn bg-blue-100 text-black font-normal" disabled>Not Applied</button>
                     </div>
                     <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
                     
                     
-                    <button onclick="transferToInterview('card-2')" class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+                    <button onclick="transferToInterview('card-2');badgeChange('badge-2')" class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
                     <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
                     <div class="absolute top-5 right-10">
                         <button onclick="deleteCard('card-2')" class="btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400  hover:bg-red-400">
