@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Job Tracker Pro</title>
     <link
       rel="shortcut icon"
       href="./images/briefcase-solid-full.svg"
@@ -35,6 +35,11 @@
       * {
         font-family: "Inter", sans-serif;
       }
+      .custom-color{
+        background-color: #50a2ff;
+        font-weight:bold;
+        color: white;
+      }
     </style>
   </head>
   <body class="bg-[#f8fafc] min-h-screen pb-10">
@@ -43,15 +48,15 @@
       <section class="grid grid-cols-3 gap-3">
         <div class="bg-white p-4 rounded-[10px]">
           <p>Total</p>
-          <h2 class="font-bold text-xl">0</h2>
+          <h2 id="total-jobs" class="font-bold text-xl">0</h2>
         </div>
         <div class="bg-white p-4 rounded-[10px]">
           <p>Interview</p>
-          <h2 class="font-bold text-xl text-green-400">0</h2>
+          <h2 id="total-inter" class="font-bold text-xl text-green-400">0</h2>
         </div>
         <div class="bg-white p-4 rounded-[10px]">
           <p>Rejected</p>
-          <h2 class="font-bold text-xl text-red-400">0</h2>
+          <h2 id="total-reject" class="font-bold text-xl text-red-400">0</h2>
         </div>
       </section>
     </header>
@@ -61,24 +66,239 @@
                 <h1 class="text-xl font-bold">Available Jobs</h1>
                 <div class="gap-3 flex">
 
-                    <button class="btn px-10 bg-white">All</button>
-                    <button class="btn px-10 bg-white">Interview</button>
-                    <button class="btn px-10 bg-white">Rejected</button>
+                    <button id="all-btn" onclick="toggleColor('all-btn')" class="btn px-10 bg-white custom-color">All</button>
+                    <button onclick="toggleColor('inter-btn')" id="inter-btn" class="btn px-10 bg-white">Interview</button>
+                    <button onclick="toggleColor('reject-btn')" id="reject-btn" class="btn px-10 bg-white">Rejected</button>
                 </div>
             </div>
             <div>
-                <h1>0 Jobs</h1>
+                <h1> <span id="total">0</span> Jobs</h1>
             </div>
         </section>
         <!-- no jobs section -->
-         <section  class="bg-white w-[93%] h-[250px] py-40 mx-auto rounded-2xl flex items-center justify-center">
+         <section  class="bg-white w-[93%] h-[250px] py-40 mx-auto rounded-2xl flex items-center justify-center hidden" id="no-jobs">
             <div class="text-center space-y-2">
                 <img src="./images/jobs.png" alt="" class="mx-auto">
                 <p>No Jobs Available</p>
                 <p>Check back soon for new Job opportunities</p>
             </div>
          </section>
-    </main>
+         <!-- all section -->
+          <section>
+            <div id="all-card" class="all-cards p-10 pt-0 space-y-4">
+                <!-- card-1 -->
+                 
+                 
+                    <div id="card-1" class="space-y-5 bg-white p-7 rounded-3xl relative b border-l-10 border-gray-200">
+                    <h1 class="font-bold text-xl">Mobile First Corp</h1>
+                    <p class="text-neutral/50">React Native Developer</p>
+                    <div class="flex gap-8 text-neutral/50">
+                        <p>Remote</p>
+                        <li>Full-time</li>
+                        <li>$130,000-$175,000</li>
+                    </div>
+                    <!-- badge container -->
+                    <div>
+                        <button class="btn bg-blue-100 text-black font-normal" disabled>Not Applied</button>
+                    </div>
+                    <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                    
+                    
+                    <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+                    <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
+                    <div class="absolute top-5 right-10">
+                        <button onclick="deleteCard('card-1')"  class="btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400  hover:bg-red-400">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- card-2 -->
+                  <div id="card-2" class=" space-y-5 bg-white p-7 rounded-3xl relative b border-l-10 border-gray-200">
+                    <h1 class="font-bold text-xl">bye</h1>
+                    <p class="text-neutral/50">React Native Developer</p>
+                    <div class="flex gap-8 text-neutral/50">
+                        <p>Remote</p>
+                        <li>Full-time</li>
+                        <li>$130,000-$175,000</li>
+                    </div>
+                    <!-- badge container -->
+                    <div>
+                        <button class="btn bg-blue-100 text-black font-normal" disabled>Not Applied</button>
+                    </div>
+                    <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                    
+                    
+                    <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+                    <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
+                    <div class="absolute top-5 right-10">
+                        <button onclick="deleteCard('card-2')" class="btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400  hover:bg-red-400">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- card-3 -->
+                  <div id="card-3" class=" space-y-5 bg-white p-7 rounded-3xl relative b border-l-10 border-gray-200">
+                    <h1 class="font-bold text-xl">Mobile First Corp</h1>
+                    <p class="text-neutral/50">React Native Developer</p>
+                    <div class="flex gap-8 text-neutral/50">
+                        <p>Remote</p>
+                        <li>Full-time</li>
+                        <li>$130,000-$175,000</li>
+                    </div>
+                    <!-- badge container -->
+                    <div>
+                        <button class="btn bg-blue-100 text-black font-normal" disabled>Not Applied</button>
+                    </div>
+                    <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                    
+                    
+                    <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+                    <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
+                    <div class="absolute top-5 right-10">
+                        <button onclick="deleteCard('card-3')" class="btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400  hover:bg-red-400">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- card-4 -->
+                  <div id="card-4" class=" space-y-5 bg-white p-7 rounded-3xl relative b border-l-10 border-gray-200">
+                    <h1 class="font-bold text-xl">Mobile First Corp</h1>
+                    <p class="text-neutral/50">React Native Developer</p>
+                    <div class="flex gap-8 text-neutral/50">
+                        <p>Remote</p>
+                        <li>Full-time</li>
+                        <li>$130,000-$175,000</li>
+                    </div>
+                    <!-- badge container -->
+                    <div>
+                        <button class="btn bg-blue-100 text-black font-normal" disabled>Not Applied</button>
+                    </div>
+                    <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                    
+                    
+                    <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+                    <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
+                    <div class="absolute top-5 right-10">
+                        <button onclick="deleteCard('card-4')" class="btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400  hover:bg-red-400">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- card-5 -->
+                  <div id="card-5" class=" space-y-5 bg-white p-7 rounded-3xl relative b border-l-10 border-gray-200">
+                    <h1 class="font-bold text-xl">Mobile First Corp</h1>
+                    <p class="text-neutral/50">React Native Developer</p>
+                    <div class="flex gap-8 text-neutral/50">
+                        <p>Remote</p>
+                        <li>Full-time</li>
+                        <li>$130,000-$175,000</li>
+                    </div>
+                    <!-- badge container -->
+                    <div>
+                        <button class="btn bg-blue-100 text-black font-normal" disabled>Not Applied</button>
+                    </div>
+                    <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                    
+                    
+                    <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+                    <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
+                    <div class="absolute top-5 right-10">
+                        <button onclick="deleteCard('card-5')" class="btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400  hover:bg-red-400">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- card-6 -->
+                  <div id="card-6" class=" space-y-5 bg-white p-7 rounded-3xl relative b border-l-10 border-gray-200">
+                    <h1 class="font-bold text-xl">Mobile First Corp</h1>
+                    <p class="text-neutral/50">React Native Developer</p>
+                    <div class="flex gap-8 text-neutral/50">
+                        <p>Remote</p>
+                        <li>Full-time</li>
+                        <li>$130,000-$175,000</li>
+                    </div>
+                    <!-- badge container -->
+                    <div>
+                        <button class="btn bg-blue-100 text-black font-normal" disabled>Not Applied</button>
+                    </div>
+                    <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                    
+                    
+                    <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+                    <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
+                    <div class="absolute top-5 right-10">
+                        <button onclick="deleteCard('card-6')" class="btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400  hover:bg-red-400">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- card-7 -->
+                  <div id="card-7" class=" space-y-5 bg-white p-7 rounded-3xl relative b border-l-10 border-gray-200">
+                    <h1 class="font-bold text-xl">Mobile First Corp</h1>
+                    <p class="text-neutral/50">React Native Developer</p>
+                    <div class="flex gap-8 text-neutral/50">
+                        <p>Remote</p>
+                        <li>Full-time</li>
+                        <li>$130,000-$175,000</li>
+                    </div>
+                    <!-- badge container -->
+                    <div>
+                        <button class="btn bg-blue-100 text-black font-normal" disabled>Not Applied</button>
+                    </div>
+                    <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                    
+                    
+                    <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+                    <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
+                    <div class="absolute top-5 right-10">
+                        <button onclick="deleteCard('card-7')" class="btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400  hover:bg-red-400">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </div>
+                    
+                </div>
+                <!-- card-8 -->
+                  <div id="card-8" class=" space-y-5 bg-white p-7 rounded-3xl relative b border-l-10 border-gray-200">
+                    <h1 class="font-bold text-xl">Mobile First Corp</h1>
+                    <p class="text-neutral/50">React Native Developer</p>
+                    <div class="flex gap-8 text-neutral/50">
+                        <p>Remote</p>
+                        <li>Full-time</li>
+                        <li>$130,000-$175,000</li>
+                    </div>
+                    <!-- badge container -->
+                    <div>
+                        <button class="btn bg-blue-100 text-black font-normal" disabled>Not Applied</button>
+                    </div>
+                    <p>Build cross-platform mobile applications using React Native. Work on products used by millions of users worldwide.</p>
+                    
+                    
+                    <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+                    <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
+                    <div class="absolute top-5 right-10">
+                        <button onclick="deleteCard('card-8')" id="delete" class="btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400  hover:bg-red-400">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            </section>
+            <!-- interview section -->
+             <section>
+                <div id="interview-cards">
+                
+                </div>
+             </section>
+             <!-- reject section -->
+             <section>
+                <div id="rejected-cards">
+                    
+                    
+                    
+                </div>
+             </section>
+        </main>
 
     <script src="./script/script.js"></script>
   </body>
