@@ -63,3 +63,14 @@ document.getElementById('all-btn').addEventListener('click',function(){
 })
 
 
+function deleteCard(id){
+  document.getElementById(id).remove()
+  const totalJob =   document.getElementById('total-jobs')
+  totalJob.innerText = cards.children.length
+  const totalJobs = document.getElementById('total')
+    totalJobs.innerText = cards.children.length
+
+    totalInterview.innerText = interCards.children.length
+    totalReject.innerText = rejectCards.children.length
+}
+
