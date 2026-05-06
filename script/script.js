@@ -72,5 +72,8 @@ function deleteCard(id){
 
     totalInterview.innerText = interCards.children.length
     totalReject.innerText = rejectCards.children.length
+    if(totalJobs.innerText==='0'){
+      section.classList.remove('hidden')
+    } 
 }
 
