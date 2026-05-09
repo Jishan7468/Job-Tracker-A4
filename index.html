@@ -55,17 +55,17 @@
       <section class="grid grid-cols-3 gap-3">
         <div class="bg-white p-4 rounded-[10px]">
           <p>Total</p>
-          <h2 class="font-bold text-xl">0</h2>
+          <h2 id="total-jobs" class="font-bold text-xl">0</h2>
         </div>
 
         <div class="bg-white p-4 rounded-[10px]">
           <p>Interview</p>
-          <h2 class="font-bold text-xl text-green-400">0</h2>
+          <h2 id="total-interview" class="font-bold text-xl text-green-400">0</h2>
         </div>
 
         <div class="bg-white p-4 rounded-[10px]">
           <p>Rejected</p>
-          <h2 class="font-bold text-xl text-red-400">0</h2>
+          <h2 id="total-rejected" class="font-bold text-xl text-red-400">0</h2>
         </div>
       </section>
     </header>
@@ -76,11 +76,11 @@
           <h1 class="text-xl font-bold">Available Jobs</h1>
 
           <div class="primary-buttons gap-3 flex">
-            <button class="btn px-10 bg-white custom-color">All</button>
+            <button id="all-tab" class="btn px-10 bg-white custom-color">All</button>
 
-            <button class="btn px-10 bg-white">Interview</button>
+            <button id="interview-tab" class="btn px-10 bg-white">Interview</button>
 
-            <button class="btn px-10 bg-white">Rejected</button>
+            <button id="rejected-tab" class="btn px-10 bg-white">Rejected</button>
           </div>
         </div>
 
@@ -90,7 +90,7 @@
       </section>
 
       <!-- no jobs section -->
-      <section
+      <section id="no-jobs-section"
         class="bg-white w-[93%] h-[250px] py-40 mx-auto rounded-2xl flex items-center justify-center hidden"
       >
         <div class="text-center space-y-2">
@@ -104,7 +104,7 @@
 
       <!-- all section -->
       <section>
-        <div class="all-cards p-10 pt-0 space-y-4">
+        <div id="all-section" class="p-10 pt-0 space-y-4">
           <!-- card-1 -->
 
           <div
@@ -212,13 +212,13 @@
       </section>
 
       <!-- interview section -->
-      <section>
-        <div class="p-10 pt-0 space-y-4"></div>
+      <section id="interview-section" class="p-10 pt-0 space-y-4">
+        
       </section>
 
       <!-- reject section -->
-      <section>
-        <div></div>
+      <section id="rejected-section" class="p-10 pt-0 space-y-4">
+        
       </section>
     </main>
 
