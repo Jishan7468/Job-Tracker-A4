@@ -11,6 +11,42 @@ const allTab = document.getElementById('all-tab')
 const interviewTab = document.getElementById('interview-tab')
 const rejectedTab = document.getElementById('rejected-tab')
 
+let interviewList = [];
+let rejectedList = []
+
+allSection.addEventListener('click' , function(){
+  const interviewButton = event.target
+  if(interviewButton.innerText === 'Interview'){
+    const parent = interviewButton.parentNode
+    const companyName = parent.querySelector('.company-name').innerText
+    
+    const companyObject = {
+      companyName
+    }
+    const companyExist
+     = interviewList.find(item => item.companyName == companyObject.companyName)
+     if(!companyExist){
+      interviewList.push(companyObject)
+      parent.classList.add('border-green-300')
+      const badge = parent.querySelector('.badge')
+      badge.className = '';
+      badge.className = 'btn text-green-500 font-bold border-2 border-green-400 bg-transparent'
+      badge.innerText ='Interview'
+      const copyParent = parent.cloneNode(true)
+      interviewSection.append(copyParent)
+      calculateJobs()
+      interviewSection.classList.add('hidden')
+     }
+     else{
+      alert('Already in interview section')
+      return;
+     }
+   
+
+  }
+
+})
+
 
 // toggle buttons
 const primaryButtons = document.querySelector('.primary-buttons')
@@ -85,4 +121,3 @@ primaryButtons.addEventListener('click', function (event) {
     }
   }
 })
-
