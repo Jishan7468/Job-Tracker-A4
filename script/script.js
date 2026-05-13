@@ -15,7 +15,6 @@ const rejectedTab = document.getElementById('rejected-tab')
 let activeTab = 'all'
 
 
-// toggle buttons
 const primaryButtons = document.querySelector('.primary-buttons')
 const allButtons = primaryButtons.querySelectorAll('.btn')
 primaryButtons.addEventListener('click', function (event) {
@@ -32,13 +31,14 @@ let interviewList = []
 let rejectedList = []
 
 
-// grab all the cards already in the HTML and store them
+
 for (const card of allSection.children) {
   const companyName = card.querySelector('.company-name').innerText
   const role = card.querySelector('.role').innerText
   const jobType = card.querySelector('.job-type').innerText
   const jobTime = card.querySelector('.job-time').innerText
   const salary = card.querySelector('.salary').innerText
+  const description = card.querySelector('.description').innerText
 
   const cardInfo = {
     companyName,
@@ -46,6 +46,7 @@ for (const card of allSection.children) {
     jobType,
     jobTime,
     salary,
+    description,
     status: 'none'
   }
 
@@ -65,10 +66,9 @@ function calculateJobs() {
 calculateJobs()
 
 
-// hide section
 function showSection(tab) {
-  activeTab = tab  // set activeTab first
-  calculateJobs() // now calculateJobs knows the correct tab
+  activeTab = tab
+  calculateJobs()
 
   allSection.classList.add('hidden')
   interviewSection.classList.add('hidden')
@@ -121,7 +121,7 @@ primaryButtons.addEventListener('click', function (event) {
 })
 
 
-// card button clicks
+
 const mainContainer = document.querySelector('main')
 mainContainer.addEventListener('click', function (event) {
 
@@ -132,6 +132,7 @@ mainContainer.addEventListener('click', function (event) {
     const jobType = parent.querySelector('.job-type').innerText
     const jobTime = parent.querySelector('.job-time').innerText
     const salary = parent.querySelector('.salary').innerText
+    const description = parent.querySelector('.description').innerText
 
     const cardInfo = {
       companyName,
@@ -139,19 +140,17 @@ mainContainer.addEventListener('click', function (event) {
       jobType,
       jobTime,
       salary,
+      description,
       status: 'interview'
     }
 
-    // update status in allJobs
     const jobInAll = allJobs.find(item => item.companyName === companyName)
     if (jobInAll) {
       jobInAll.status = 'interview'
     }
 
-    // remove from rejectedList if it was there
     rejectedList = rejectedList.filter(item => item.companyName !== companyName)
 
-    // add to interviewList if not already there
     const checkExist = interviewList.find(item => item.companyName === companyName)
     if (!checkExist) {
       interviewList.push(cardInfo)
@@ -169,6 +168,7 @@ mainContainer.addEventListener('click', function (event) {
     const jobType = parent.querySelector('.job-type').innerText
     const jobTime = parent.querySelector('.job-time').innerText
     const salary = parent.querySelector('.salary').innerText
+    const description = parent.querySelector('.description').innerText
 
     const cardInfo = {
       companyName,
@@ -176,19 +176,17 @@ mainContainer.addEventListener('click', function (event) {
       jobType,
       jobTime,
       salary,
+      description,
       status: 'rejected'
     }
 
-    // update status in allJobs
     const jobInAll = allJobs.find(item => item.companyName === companyName)
     if (jobInAll) {
       jobInAll.status = 'rejected'
     }
 
-    // remove from interviewList if it was there
     interviewList = interviewList.filter(item => item.companyName !== companyName)
 
-    // add to rejectedList if not already there
     const checkExist = rejectedList.find(item => item.companyName === companyName)
     if (!checkExist) {
       rejectedList.push(cardInfo)
@@ -238,30 +236,16 @@ function transferToAll() {
     div.innerHTML = `
       <div class="space-y-5 bg-white p-7 rounded-3xl relative border-l-10 ${borderColor}">
         <h1 class="company-name font-bold text-xl">${job.companyName}</h1>
-
         <p class="role text-neutral/50">${job.role}</p>
-
         <div class="flex gap-8 text-neutral/50">
           <p class="job-type">${job.jobType}</p>
           <li class="job-time">${job.jobTime}</li>
           <li class="salary">${job.salary}</li>
         </div>
-
         <div>${badgeHTML}</div>
-
-        <p>
-          Build cross-platform mobile applications using React Native. Work
-          on products used by millions of users worldwide.
-        </p>
-
-        <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">
-          Interview
-        </button>
-
-        <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">
-          Rejected
-        </button>
-
+        <p class="description">${job.description}</p>
+        <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+        <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
         <div class="absolute top-5 right-10">
           <button class="delete-btn btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400 hover:bg-red-400">
             <i class="fa-regular fa-trash-can"></i>
@@ -282,34 +266,18 @@ function transferToInterview() {
     div.innerHTML = `
       <div class="space-y-5 bg-white p-7 rounded-3xl relative border-l-10 border-green-300">
         <h1 class="company-name font-bold text-xl">${interview.companyName}</h1>
-
         <p class="role text-neutral/50">${interview.role}</p>
-
         <div class="flex gap-8 text-neutral/50">
           <p class="job-type">${interview.jobType}</p>
           <li class="job-time">${interview.jobTime}</li>
           <li class="salary">${interview.salary}</li>
         </div>
-
         <div>
-          <button class="badge btn text-green-500 font-bold border-2 border-green-400 bg-transparent" disabled>
-            Interview
-          </button>
+          <button class="badge btn text-green-500 font-bold border-2 border-green-400 bg-transparent" disabled>Interview</button>
         </div>
-
-        <p>
-          Build cross-platform mobile applications using React Native. Work
-          on products used by millions of users worldwide.
-        </p>
-
-        <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">
-          Interview
-        </button>
-
-        <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">
-          Rejected
-        </button>
-
+        <p class="description">${interview.description}</p>
+        <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+        <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
         <div class="absolute top-5 right-10">
           <button class="delete-btn btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400 hover:bg-red-400">
             <i class="fa-regular fa-trash-can"></i>
@@ -330,34 +298,18 @@ function transferToRejected() {
     div.innerHTML = `
       <div class="space-y-5 bg-white p-7 rounded-3xl relative border-l-10 border-red-300">
         <h1 class="company-name font-bold text-xl">${reject.companyName}</h1>
-
         <p class="role text-neutral/50">${reject.role}</p>
-
         <div class="flex gap-8 text-neutral/50">
           <p class="job-type">${reject.jobType}</p>
           <li class="job-time">${reject.jobTime}</li>
           <li class="salary">${reject.salary}</li>
         </div>
-
         <div>
-          <button class="badge btn text-red-500 font-bold border-2 border-red-400 bg-transparent" disabled>
-            Rejected
-          </button>
+          <button class="badge btn text-red-500 font-bold border-2 border-red-400 bg-transparent" disabled>Rejected</button>
         </div>
-
-        <p>
-          Build cross-platform mobile applications using React Native. Work
-          on products used by millions of users worldwide.
-        </p>
-
-        <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">
-          Interview
-        </button>
-
-        <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">
-          Rejected
-        </button>
-
+        <p class="description">${reject.description}</p>
+        <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+        <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
         <div class="absolute top-5 right-10">
           <button class="delete-btn btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400 hover:bg-red-400">
             <i class="fa-regular fa-trash-can"></i>

@@ -4,273 +4,201 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Job Tracker Pro</title>
-    <link
-      rel="shortcut icon"
-      href="./images/briefcase-solid-full.svg"
-      type="image/x-icon"
-    />
-
-    <!-- font connected -->
+    <link rel="shortcut icon" href="./images/briefcase-solid-full.svg" type="image/x-icon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-
-    <!-- font awesome connected -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <!-- daisy and tailwind -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@5"
-      rel="stylesheet"
-      type="text/css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-
     <style>
-      * {
-        font-family: "Inter", sans-serif;
-      }
-
-      .custom-color {
-        background-color: #50a2ff;
-        font-weight: bold;
-        color: white;
-      }
+      * { font-family: "Inter", sans-serif; }
+      .custom-color { background-color: #50a2ff; font-weight: bold; color: white; }
     </style>
   </head>
-
   <body class="bg-[#f8fafc] min-h-screen pb-10">
     <header class="p-10 w-[80%] mx-auto space-y-5">
       <h1 class="font-bold text-2xl">Job Application Tracker</h1>
-
       <section class="grid grid-cols-3 gap-3">
         <div class="bg-white p-4 rounded-[10px]">
           <p>Total</p>
           <h2 id="total-jobs" class="font-bold text-xl">0</h2>
         </div>
-
         <div class="bg-white p-4 rounded-[10px]">
           <p>Interview</p>
           <h2 id="total-interview" class="font-bold text-xl text-green-400">0</h2>
         </div>
-
         <div class="bg-white p-4 rounded-[10px]">
           <p>Rejected</p>
           <h2 id="total-rejected" class="font-bold text-xl text-red-400">0</h2>
         </div>
       </section>
     </header>
-
     <main class="mx-auto w-[80%]">
       <section class="p-10 flex justify-between">
         <div class="space-y-5">
           <h1 class="text-xl font-bold">Available Jobs</h1>
-
           <div class="primary-buttons gap-3 flex">
             <button id="all-tab" class="btn px-10 bg-white custom-color">All</button>
-
             <button id="interview-tab" class="btn px-10 bg-white">Interview</button>
-
             <button id="rejected-tab" class="btn px-10 bg-white">Rejected</button>
           </div>
         </div>
-
         <div>
           <h1><span id="section-count">0</span> Jobs</h1>
         </div>
       </section>
-
-      <!-- no jobs section -->
-      <section id="no-jobs-section"
-        class="bg-white w-[93%] h-[250px] py-40 mx-auto rounded-2xl flex items-center justify-center hidden"
-      >
+      <section id="no-jobs-section" class="bg-white w-[93%] h-[250px] py-40 mx-auto rounded-2xl flex items-center justify-center hidden">
         <div class="text-center space-y-2">
           <img src="./images/jobs.png" alt="" class="mx-auto" />
-
           <p>No Jobs Available</p>
-
           <p>Check back soon for new Job opportunities</p>
         </div>
       </section>
-
-      <!-- all section -->
       <section>
         <div id="all-section" class="p-10 pt-0 space-y-4">
-          <!-- card-1 -->
 
-          <div
-            class="space-y-5 bg-white p-7 rounded-3xl relative border-l-10 border-gray-200"
-          >
-            <h1 class="company-name font-bold text-xl">
-              Jishan First Corp
-            </h1>
+          <div class="space-y-5 bg-white p-7 rounded-3xl relative border-l-10 border-gray-200">
+            <h1 class="company-name font-bold text-xl">Google (Google LLC)</h1>
+            <p class="role text-neutral/50">Software Engineer</p>
+            <div class="flex gap-8 text-neutral/50">
+              <p class="job-type">On-site</p>
+              <li class="job-time">Full-time</li>
+              <li class="salary">$120,000 – $180,000</li>
+            </div>
+            <div><button class="badge btn bg-blue-100 text-black font-normal" disabled>Not Applied</button></div>
+            <p class="description">Develops scalable applications and backend systems used by millions of users worldwide. Works with large-scale infrastructure, APIs, and cloud technologies while collaborating with cross-functional teams.</p>
+            <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+            <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
+            <div class="absolute top-5 right-10">
+              <button class="delete-btn btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400 hover:bg-red-400"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+          </div>
 
-            <p class="role text-neutral/50">React Native Developer</p>
+          <div class="space-y-5 bg-white p-7 rounded-3xl relative border-l-10 border-gray-200">
+            <h1 class="company-name font-bold text-xl">Microsoft (Microsoft Corporation)</h1>
+            <p class="role text-neutral/50">Cloud Solutions Architect</p>
+            <div class="flex gap-8 text-neutral/50">
+              <p class="job-type">Hybrid</p>
+              <li class="job-time">Full-time</li>
+              <li class="salary">$110,000 – $170,000</li>
+            </div>
+            <div><button class="badge btn bg-blue-100 text-black font-normal" disabled>Not Applied</button></div>
+            <p class="description">Designs and manages cloud-based solutions using Azure services. Helps businesses migrate infrastructure to the cloud while ensuring security, performance, and scalability.</p>
+            <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+            <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
+            <div class="absolute top-5 right-10">
+              <button class="delete-btn btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400 hover:bg-red-400"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+          </div>
 
+          <div class="space-y-5 bg-white p-7 rounded-3xl relative border-l-10 border-gray-200">
+            <h1 class="company-name font-bold text-xl">Amazon (Amazon.com, Inc.)</h1>
+            <p class="role text-neutral/50">DevOps Engineer</p>
+            <div class="flex gap-8 text-neutral/50">
+              <p class="job-type">On-site</p>
+              <li class="job-time">Full-time</li>
+              <li class="salary">$100,000 – $160,000</li>
+            </div>
+            <div><button class="badge btn bg-blue-100 text-black font-normal" disabled>Not Applied</button></div>
+            <p class="description">Automates deployment pipelines and manages server infrastructure for high-traffic applications. Focuses on CI/CD, monitoring systems, and improving system reliability.</p>
+            <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+            <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
+            <div class="absolute top-5 right-10">
+              <button class="delete-btn btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400 hover:bg-red-400"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+          </div>
+
+          <div class="space-y-5 bg-white p-7 rounded-3xl relative border-l-10 border-gray-200">
+            <h1 class="company-name font-bold text-xl">Meta (Meta Platforms, Inc.)</h1>
+            <p class="role text-neutral/50">Backend Developer</p>
             <div class="flex gap-8 text-neutral/50">
               <p class="job-type">Remote</p>
               <li class="job-time">Full-time</li>
-              <li class="salary">$130,000-$175,000</li>
+              <li class="salary">$130,000 – $190,000</li>
             </div>
-
-            <!-- badge container -->
-            <div>
-              <button
-                class="badge btn bg-blue-100 text-black font-normal"
-                disabled
-              >
-                Not Applied
-              </button>
-            </div>
-
-            <p>
-              Build cross-platform mobile applications using React Native. Work
-              on products used by millions of users worldwide.
-            </p>
-
-            <button
-              class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400"
-            >
-              Interview
-            </button>
-
-            <button
-              class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]"
-            >
-              Rejected
-            </button>
-
+            <div><button class="badge btn bg-blue-100 text-black font-normal" disabled>Not Applied</button></div>
+            <p class="description">Builds server-side applications, APIs, and database systems powering social media platforms. Works on performance optimization, authentication systems, and scalable architectures.</p>
+            <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+            <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
             <div class="absolute top-5 right-10">
-              <button
-                class="btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400 hover:bg-red-400"
-              >
-                <i class="fa-regular fa-trash-can"></i>
-              </button>
+              <button class="delete-btn btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400 hover:bg-red-400"><i class="fa-regular fa-trash-can"></i></button>
             </div>
           </div>
 
-          <!-- card-2 -->
+          <div class="space-y-5 bg-white p-7 rounded-3xl relative border-l-10 border-gray-200">
+            <h1 class="company-name font-bold text-xl">Netflix (Netflix, Inc.)</h1>
+            <p class="role text-neutral/50">Site Reliability Engineer</p>
+            <div class="flex gap-8 text-neutral/50">
+              <p class="job-type">Remote</p>
+              <li class="job-time">Full-time</li>
+              <li class="salary">$140,000 – $220,000</li>
+            </div>
+            <div><button class="badge btn bg-blue-100 text-black font-normal" disabled>Not Applied</button></div>
+            <p class="description">Maintains streaming infrastructure and ensures high system availability for millions of users. Handles incident response, monitoring, and cloud-based reliability engineering.</p>
+            <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+            <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
+            <div class="absolute top-5 right-10">
+              <button class="delete-btn btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400 hover:bg-red-400"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+          </div>
 
-          <div
-            class="space-y-5 bg-white p-7 rounded-3xl relative border-l-10 border-gray-200"
-          >
-            <h1 class="company-name font-bold text-xl">bye</h1>
+          <div class="space-y-5 bg-white p-7 rounded-3xl relative border-l-10 border-gray-200">
+            <h1 class="company-name font-bold text-xl">Tesla (Tesla, Inc.)</h1>
+            <p class="role text-neutral/50">Data Engineer</p>
+            <div class="flex gap-8 text-neutral/50">
+              <p class="job-type">On-site</p>
+              <li class="job-time">Full-time</li>
+              <li class="salary">$95,000 – $150,000</li>
+            </div>
+            <div><button class="badge btn bg-blue-100 text-black font-normal" disabled>Not Applied</button></div>
+            <p class="description">Processes and organizes large-scale automotive and operational data for analytics and AI systems. Builds efficient data pipelines and supports machine learning workflows.</p>
+            <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+            <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
+            <div class="absolute top-5 right-10">
+              <button class="delete-btn btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400 hover:bg-red-400"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+          </div>
 
-            <p class="role text-neutral/50">Native Developer</p>
-
+          <div class="space-y-5 bg-white p-7 rounded-3xl relative border-l-10 border-gray-200">
+            <h1 class="company-name font-bold text-xl">IBM (International Business Machines Corporation)</h1>
+            <p class="role text-neutral/50">Cybersecurity Analyst</p>
             <div class="flex gap-8 text-neutral/50">
               <p class="job-type">Hybrid</p>
-              <li class="job-time">Part-time</li>
-              <li class="salary">$30,000-$75,000</li>
+              <li class="job-time">Full-time</li>
+              <li class="salary">$85,000 – $140,000</li>
             </div>
-
-            <!-- badge container -->
-            <div>
-              <button
-                class="badge btn bg-blue-100 text-black font-normal"
-                disabled
-              >
-                Not Applied
-              </button>
-            </div>
-
-            <p>
-              Build cross-platform mobile applications using React Native. Work
-              on products used by millions of users worldwide.
-            </p>
-
-            <button
-              class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400"
-            >
-              Interview
-            </button>
-
-            <button
-              class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]"
-            >
-              Rejected
-            </button>
-
+            <div><button class="badge btn bg-blue-100 text-black font-normal" disabled>Not Applied</button></div>
+            <p class="description">Protects company systems from cyber threats through monitoring, penetration testing, and risk analysis. Investigates security incidents and implements security policies.</p>
+            <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+            <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
             <div class="absolute top-5 right-10">
-              <button
-                class="btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400 hover:bg-red-400"
-              >
-                <i class="fa-regular fa-trash-can"></i>
-              </button>
+              <button class="delete-btn btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400 hover:bg-red-400"><i class="fa-regular fa-trash-can"></i></button>
             </div>
           </div>
-          <!-- card-3 -->
-           <div
-            class="space-y-5 bg-white p-7 rounded-3xl relative border-l-10 border-gray-200"
-          >
-            <h1 class="company-name font-bold text-xl">hi</h1>
 
-            <p class="role text-neutral/50">Developer</p>
-
+          <div class="space-y-5 bg-white p-7 rounded-3xl relative border-l-10 border-gray-200">
+            <h1 class="company-name font-bold text-xl">Adobe (Adobe Inc.)</h1>
+            <p class="role text-neutral/50">Frontend Developer</p>
             <div class="flex gap-8 text-neutral/50">
-              <p class="job-type">Hybrid</p>
-              <li class="job-time">Part-time</li>
-              <li class="salary">$30,000-$75,000</li>
+              <p class="job-type">Remote</p>
+              <li class="job-time">Full-time</li>
+              <li class="salary">$100,000 – $155,000</li>
             </div>
-
-            <!-- badge container -->
-            <div>
-              <button
-                class="badge btn bg-blue-100 text-black font-normal"
-                disabled
-              >
-                Not Applied
-              </button>
-            </div>
-
-            <p>
-              Build cross-platform mobile applications using React Native. Work
-              on products used by millions of users worldwide.
-            </p>
-
-            <button
-              class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400"
-            >
-              Interview
-            </button>
-
-            <button
-              class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]"
-            >
-              Rejected
-            </button>
-
+            <div><button class="badge btn bg-blue-100 text-black font-normal" disabled>Not Applied</button></div>
+            <p class="description">Creates responsive and interactive user interfaces for web applications and creative tools. Works closely with designers to improve user experience and accessibility.</p>
+            <button class="btn hover:bg-green-300 hover:text-white text-green-500 font-bold border-2 border-green-400">Interview</button>
+            <button class="btn hover:bg-red-300 hover:text-white text-red-400 font-bold border-2 border-red-400 mb-[20px]">Rejected</button>
             <div class="absolute top-5 right-10">
-              <button
-                class="btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400 hover:bg-red-400"
-              >
-                <i class="fa-regular fa-trash-can"></i>
-              </button>
+              <button class="delete-btn btn h-full bg-base-200 rounded-[100%] p-3 border-2 border-gray-400 hover:bg-red-400"><i class="fa-regular fa-trash-can"></i></button>
             </div>
           </div>
+
         </div>
       </section>
-
-      <!-- interview section -->
-      <section id="interview-section" class="p-10 pt-0 space-y-4 hidden">
-        
-      </section>
-
-      <!-- reject section -->
-      <section id="rejected-section" class="p-10 pt-0 space-y-4 hidden">
-        
-      </section>
+      <section id="interview-section" class="p-10 pt-0 space-y-4 hidden"></section>
+      <section id="rejected-section" class="p-10 pt-0 space-y-4 hidden"></section>
     </main>
-
     <script src="./script/script.js"></script>
   </body>
 </html>
